@@ -30,6 +30,8 @@ describe('the first test suite', () => {
     })
 
     it.only('second test',()=>{
-
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layouts').click()
     })
 })
