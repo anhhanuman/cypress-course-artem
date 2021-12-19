@@ -3,9 +3,11 @@ describe('the first test suite', () => {
     it('the first test case', () => {
         // already provided the baseUrl in the cypress.json, cy.visit(/) will provide the root path in order to open the web application
         cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layouts').click()
         //search element by tag name
         cy.get('input')
-        cy.get('#inputEmail')
+        cy.get('#inputEmail1')
         cy.get('.input-full-width')
         // by attribute name
         cy.get('[placeholder]')
@@ -20,11 +22,11 @@ describe('the first test suite', () => {
         cy.get('[placeholder="Email"][type="email"][fullwidth]')
 
         // by tag name, attribute with value, id and class name
-        cy.get('input [type="email"]##inputEmail.input-full-width')
+        cy.get('input[type="email"]#inputEmail1.input-full-width')
 
         // the most recommended way by Cypress. Add your own attribute data-cy to the source code/section HTML
         //you won't be afraid any attributes are changed, even the ID can be changed in the modern web such as dynamic id or dynamic classes
-        cy.get('[data-cy="inputEmail1"]')
+        cy.get('[data-cy="imputEmail1"]').type('vuonganh.dhkt@gmail.com')
 
 
     })
