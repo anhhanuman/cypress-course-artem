@@ -38,5 +38,6 @@ describe('the first test suite', () => {
         cy.get('[data-cy="signInButton"]')
         //ALWAYS LOOK AT THE DOM text, here in this example the SIGN IN is upper case by css
         cy.contains('Sign in')
+        //Cypress found several SIGN IN button, cypress find the fist matched
     })
 })
