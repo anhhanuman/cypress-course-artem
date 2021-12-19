@@ -8,6 +8,6 @@ describe('the first test suite', () => {
         // by attribute name
         cy.get('[placeholder]')
         //by attribute name and value
-
+        cy.get('[placeholder="Email"]')
     })
 })
