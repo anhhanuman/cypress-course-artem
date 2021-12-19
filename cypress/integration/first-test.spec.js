@@ -33,5 +33,8 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
+        // find the SIGN IN element when it neither have ID nor any unique attribute
+        // add the data-cy attribute to the html file
+        cy.get('[data-cy="signInButton"]')
     })
 })
