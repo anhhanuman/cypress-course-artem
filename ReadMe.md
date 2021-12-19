@@ -37,5 +37,7 @@ application is always at https://localhost:4200
 also, look at for reference git ignore files,:
 https://globster.xyz/
 
+### 9 - Test Structure
+describe() and it(). You can also but another describe() inside describe()
 
 
