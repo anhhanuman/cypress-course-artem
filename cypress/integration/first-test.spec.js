@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 describe('the first test suite', () => {
     it('the first test case', () => {
+        // already provided the baseUrl in the cypress.json, cy.visit(/) will provide the root path in order to open the web application
+        cy.visit('/')
         //search element by tag name
         cy.get('input')
         cy.get('#inputEmail')
