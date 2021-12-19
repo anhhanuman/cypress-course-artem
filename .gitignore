@@ -1,0 +1,6 @@
+/node_modules/
+/cypress/integration/1-getting-started/
+/cypress/integration/2-advanced-examples/
+/.idea/vcs.xml
+/.idea/modules.xml
+/.idea/misc.xml
