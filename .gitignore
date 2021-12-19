@@ -1,6 +1,11 @@
 /node_modules/
-/cypress/integration/1-getting-started/
-/cypress/integration/2-advanced-examples/
+/cypress/integration/examples/1-getting-started/
+/cypress/integration/examples/2-advanced-examples/
 /.idea/vcs.xml
 /.idea/modules.xml
 /.idea/misc.xml
+/cypress/support/commands.js
+/.idea/cypress-course-artem.iml
+/cypress/plugins/index.js
+/cypress/fixtures/example.json
+/cypress/support/index.js
