@@ -1,0 +1,22 @@
+{
+  "name": "cypress-course-artem",
+  "version": "1.0.0",
+  "description": "learning from this author",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhhanuman/cypress-course-artem.git"
+  },
+  "author": "anh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhhanuman/cypress-course-artem/issues"
+  },
+  "homepage": "https://github.com/anhhanuman/cypress-course-artem#readme",
+  "devDependencies": {
+    "cypress": "^9.1.1"
+  }
+}
