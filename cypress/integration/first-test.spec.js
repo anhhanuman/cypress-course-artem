@@ -36,5 +36,7 @@ describe('the first test suite', () => {
         // find the SIGN IN element when it neither have ID nor any unique attribute
         // add the data-cy attribute to the html file
         cy.get('[data-cy="signInButton"]')
+        //ALWAYS LOOK AT THE DOM text, here in this example the SIGN IN is upper case by css
+        cy.contains('Sign in')
     })
 })
