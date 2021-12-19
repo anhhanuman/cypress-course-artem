@@ -27,7 +27,9 @@ describe('the first test suite', () => {
         // the most recommended way by Cypress. Add your own attribute data-cy to the source code/section HTML
         //you won't be afraid any attributes are changed, even the ID can be changed in the modern web such as dynamic id or dynamic classes
         cy.get('[data-cy="imputEmail1"]').type('vuonganh.dhkt@gmail.com')
+    })
 
+    it.only('second test',()=>{
 
     })
 })
