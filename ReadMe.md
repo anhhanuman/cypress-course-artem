@@ -40,4 +40,9 @@ https://globster.xyz/
 ### 9 - Test Structure
 describe() and it(). You can also but another describe() inside describe()
 
-
+### 10: Type of locators
+Cypress
+- does not need to use the **xpath** like Selenium => not recommend
+- use the Jquery engine selector => recommend
+- use the best practice data-cy
+- 
