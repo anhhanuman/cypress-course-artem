@@ -9,5 +9,7 @@ describe('the first test suite', () => {
         cy.get('[placeholder]')
         //by attribute name and value
         cy.get('[placeholder="Email"]')
+        // by class value
+        cy.get('[class="input-full-width size-medium shape-rectangle"]')
     })
 })
