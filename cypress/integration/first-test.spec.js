@@ -20,5 +20,10 @@ describe('the first test suite', () => {
         // by tag name, attribute with value, id and class name
         cy.get('input [type="email"]##inputEmail.input-full-width')
 
+        // the most recommended way by Cypress. Add your own attribute data-cy to the source code/section HTML
+        //you won't be afraid any attributes are changed, even the ID can be changed in the modern web such as dynamic id or dynamic classes
+        cy.get('[data-cy="inputEmail1"]')
+
+
     })
 })
