@@ -42,5 +42,11 @@ describe('the first test suite', () => {
 
         //find SIGN IN button with attribute [status="warning"]
         cy.contains('[status="warning"]','Sign in')
+        // travel through the DOM, find a unique element in the section
+        // travel up levels using parents() - see https://docs.cypress.io/api/commands/parents
+        // then travel to SIGN IN button
+        cy.get('#inputEmail3')
+            .parents('form')
+            .find('button')
     })
 })
