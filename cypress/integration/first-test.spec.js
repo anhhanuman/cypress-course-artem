@@ -55,6 +55,6 @@ describe('the first test suite', () => {
             .find('nb-checkbox').click()
         //another example for cy.contains()
         //imagine that the email field does not have unique identifier
-        cy.contains('','Horizontal form')
+        cy.contains('nb-card','Horizontal form')
     })
 })
