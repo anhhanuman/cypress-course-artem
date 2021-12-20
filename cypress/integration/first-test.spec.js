@@ -51,5 +51,7 @@ describe('the first test suite', () => {
             .parents('form')
             .find('button')
             .should('contain','Sign in')
+            .parents('form')
+            .find('nb-checkbox').click()
     })
 })
