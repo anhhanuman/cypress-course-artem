@@ -45,8 +45,11 @@ describe('the first test suite', () => {
         // travel through the DOM, find a unique element in the section
         // travel up levels using parents() - see https://docs.cypress.io/api/commands/parents
         // then travel to SIGN IN button
+        // add assertion - see https://docs.cypress.io/guides/references/assertions
+
         cy.get('#inputEmail3')
             .parents('form')
             .find('button')
+            .should('contain','Sign in')
     })
 })
