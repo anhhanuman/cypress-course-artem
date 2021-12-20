@@ -53,7 +53,5 @@ describe('the first test suite', () => {
             .should('contain','Sign in')
             .parents('form')
             .find('nb-checkbox').click()
-        //error if using only find() without parents() or parent()
-        cy.find('button')
     })
 })
