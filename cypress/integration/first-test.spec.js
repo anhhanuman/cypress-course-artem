@@ -53,5 +53,8 @@ describe('the first test suite', () => {
             .should('contain','Sign in')
             .parents('form')
             .find('nb-checkbox').click()
+        //another example for cy.contains()
+        //imagine that the email field does not have unique identifier
+        cy.contains('Horizontal form')
     })
 })
