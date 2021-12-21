@@ -73,11 +73,14 @@ describe('the first test suite', () => {
         //use the then() method in cypress to save the result from cypress command
         //cypress style:
         cy.contains('nb-card','Using the Grid').then(firstForm =>{
-            const emailLabelFirst = firstForm.find('[for="inputEmail1"]').text()
+            const emailLabelFirst = firstForm.find('[for="inputEmail1"]').text()//jquery
             const passwordLabelFirst = firstForm.find('[for="inputPassword2"]').text()
             expect(emailLabelFirst).to.equal('Email')
             expect(passwordLabelFirst).to.equal('Password')
         })
+
+        //work with jquery, can't use the cypress click() method
+        //work with jquery, have to use the expect from Chai
 
     })
 })
