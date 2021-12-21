@@ -29,7 +29,7 @@ describe('the first test suite', () => {
         cy.get('[data-cy="imputEmail1"]').type('vuonganh.dhkt@gmail.com')
     })
 
-    it.only('second test',()=>{
+    it('second test', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -41,7 +41,7 @@ describe('the first test suite', () => {
         //Cypress found several SIGN IN button, cypress find the fist matched
 
         //find SIGN IN button with attribute [status="warning"]
-        cy.contains('[status="warning"]','Sign in')
+        cy.contains('[status="warning"]', 'Sign in')
         // travel through the DOM, find a unique element in the section
         // travel up levels using parents() - see https://docs.cypress.io/api/commands/parents
         // then travel to SIGN IN button
@@ -50,11 +50,24 @@ describe('the first test suite', () => {
         cy.get('#inputEmail3')
             .parents('form')
             .find('button')
-            .should('contain','Sign in')
+            .should('contain', 'Sign in')
             .parents('form')
             .find('nb-checkbox').click()
         //another example for cy.contains()
         //imagine that the email field does not have unique identifier
-        cy.contains('nb-card','Horizontal form').find('[type="email"]')
+        cy.contains('nb-card', 'Horizontal form').find('[type="email"]')
+        //SUMMARY: get is used to searching for element in the entire DOM
+    })
+    //how to save the result of cypress function to reuse later
+    it.only('then and wrap methods', () => {
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layouts').click()
+
+        cy.contains('nb-card','Using the Grid').find('[for="inputEmail1"]').should('contain','Email')
+        cy.contains('nb-card','Using the Grid').find('[for="inputPassword2"]').should('contain','Password')
+        cy.contains('nb-card','Basic form').find('[for="exampleInputEmail1"]').should('contain','Email')
+        cy.contains('nb-card','Basic form').find('[for="exampleInputPassword1"]').should('contain','Password')
+
     })
 })
