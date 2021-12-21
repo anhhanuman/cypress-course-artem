@@ -80,6 +80,9 @@ describe('the first test suite', () => {
             cy.contains('nb-card', 'Basic form').then(secondForm => {
                 const passwordLabelSecond = secondForm.find('[for="exampleInputPassword1"]').text()
                 expect(passwordLabelFirst).equal(passwordLabelSecond)
+                //how to switch back to Cypress methods from Jquery, use the cy.wrap()
+                cy.wrap(secondForm).find('[for="exampleInputPassword1"]').should('contain','Password')
+
             })
         })
 
