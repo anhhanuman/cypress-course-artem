@@ -69,10 +69,5 @@ describe('the first test suite', () => {
         cy.contains('nb-card', 'Basic form').find('[for="exampleInputEmail1"]').should('contain', 'Email')
         cy.contains('nb-card', 'Basic form').find('[for="exampleInputPassword1"]').should('contain', 'Password')
 
-        //selenium
-        const firstForm = cy.contains('nb-card', 'Using the grid')
-        //const secondForm = cy.contains('nb-card', 'Basic form')
-        console.log(firstForm)
-        //cypress is an asynchronous, you can't save the result like this
     })
 })
