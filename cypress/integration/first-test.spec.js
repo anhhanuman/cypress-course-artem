@@ -68,6 +68,11 @@ describe('the first test suite', () => {
         cy.contains('nb-card', 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
         cy.contains('nb-card', 'Basic form').find('[for="exampleInputEmail1"]').should('contain', 'Email')
         cy.contains('nb-card', 'Basic form').find('[for="exampleInputPassword1"]').should('contain', 'Password')
+        cy.contains('nb-card', 'Basic form').find('[for="exampleInputPassword1"]').should('contain', 'Password')
+
+        //use the then() method in cypress to save the result from cypress command
+        //cypress style:
+        cy.contains('nb-card','Using the Grid')
 
     })
 })
