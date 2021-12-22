@@ -59,7 +59,7 @@ describe('the first test suite', () => {
         //SUMMARY: get is used to searching for element in the entire DOM
     })
     //how to save the result of cypress function to reuse later
-    it.only('then and wrap methods', () => {
+    it('then and wrap methods', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
@@ -81,7 +81,7 @@ describe('the first test suite', () => {
                 const passwordLabelSecond = secondForm.find('[for="exampleInputPassword1"]').text()
                 expect(passwordLabelFirst).equal(passwordLabelSecond)
                 //how to switch back to Cypress methods from Jquery, use the cy.wrap()
-                cy.wrap(secondForm).find('[for="exampleInputPassword1"]').should('contain','Password')
+                cy.wrap(secondForm).find('[for="exampleInputPassword1"]').should('contain', 'Password')
 
             })
         })
@@ -89,5 +89,23 @@ describe('the first test suite', () => {
         //work with jquery, can't use the cypress click() method
         //work with jquery, have to use the expect from Chai
 
+    })
+
+    //how to get the text from the web page using the invoke command
+    it.only('invoke command', () => {
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layout').click()
+
+        //1
+        cy.get('[for="exampleInputEmail1"]').should('contain', 'Email address')
+        //2
+        cy.get('[for="exampleInputEmail1"]').then(label => {
+            expect(label.text()).to.equal('Email address')
+        })
+        //3
+        cy.get('[for="exampleInputEmail1"]').invoke('text').then(text=>{
+            expect(text).to.equal('Email address')
+        })
     })
 })
