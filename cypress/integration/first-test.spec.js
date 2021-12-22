@@ -92,7 +92,7 @@ describe('the first test suite', () => {
     })
 
     //how to get the text from the web page using the invoke command
-    it.only('invoke command', () => {
+    it('invoke command', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layout').click()
@@ -117,5 +117,17 @@ describe('the first test suite', () => {
             .then(classValue => {
                 expect(classValue).to.contains('checked')
             })
+    })
+
+    it.only('', () => {
+        // an example of date picker which the value is not displayed on the DOM, how to verify?
+        //it is in the properties/value of the dev tools
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Datepicker').click()
+
+        cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
+            cy.wrap(input).click()
+        })
     })
 })
