@@ -128,6 +128,8 @@ describe('the first test suite', () => {
 
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
+            cy.get('nb-calendar-day-picker').contains('22').click()
+
         })
     })
 })
