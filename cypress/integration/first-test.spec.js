@@ -107,5 +107,12 @@ describe('the first test suite', () => {
         cy.get('[for="exampleInputEmail1"]').invoke('text').then(text=>{
             expect(text).to.equal('Email address')
         })
+        // test case: verify the check-box is checked by class having checked value
+        cy.contains('nb-card','Basic form')
+            .find('nb-checkbox')
+            .click()
+            .find('.custom-checkbox')
+            .invoke('attr','class')
+            .should('contain','checked')
     })
 })
