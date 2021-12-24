@@ -129,22 +129,23 @@ describe('the first test suite', () => {
         cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
             cy.wrap(input).click()
             cy.get('nb-calendar-day-picker').contains('22').click()
-            cy.wrap(input).invoke('prop','value').should('contain','Dec 22, 2021')
+            cy.wrap(input).invoke('prop', 'value').should('contain', 'Dec 22, 2021')
         })
     })
 
-    it('',()=>{
+    it('', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layout').click()
-        cy.contains('nb-card','Using the Grid').find('[type="radio"]').then(radioButtons=>{
+        cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then(radioButtons => {
+
             cy.wrap(radioButtons)
                 .first()
-                .check({force:true})
+                .check({force: true})
                 .should('be.checked')
             cy.wrap(radioButtons)
                 .eq(1)
-                .check({force:true})
+                .check({force: true})
                 .should('be.checked')
 
             cy.wrap(radioButtons)
@@ -156,6 +157,13 @@ describe('the first test suite', () => {
                 .should('be.disabled')
         })
     })
-
+    it.only('', () => {
+        cy.visit('/')
+        cy.contains('Modal & Overlays').click()
+        cy.contains('Toastr').click()
+        cy.get('[type="checkbox"]').check({force:true})
+        //check method only check to the UNCHECK
+        //IF you want to  uncheck you have to use the click()
+    })
 
 })
