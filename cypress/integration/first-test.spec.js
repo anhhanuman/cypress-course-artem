@@ -144,6 +144,8 @@ describe('the first test suite', () => {
                 .should('be.checked')
             cy.wrap(radioButtons)
                 .eq(1)
+                .check({force:true})
+                .should('be.checked')
         })
     })
 })
