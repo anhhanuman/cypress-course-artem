@@ -140,7 +140,10 @@ describe('the first test suite', () => {
         cy.contains('nb-card','Using the Grid').find('[type="radio"]').then(radioButtons=>{
             cy.wrap(radioButtons)
                 .first()
-                .check()
+                .check({force:true})
+                .should('be.checked')
+            cy.wrap(radioButtons)
+                .eq(1)
         })
     })
 })
