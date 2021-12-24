@@ -119,7 +119,7 @@ describe('the first test suite', () => {
             })
     })
 
-    it.only('', () => {
+    it('', () => {
         // an example of date picker which the value is not displayed on the DOM, how to verify?
         //it is in the properties/value of the dev tools
         cy.visit('/')
@@ -130,7 +130,17 @@ describe('the first test suite', () => {
             cy.wrap(input).click()
             cy.get('nb-calendar-day-picker').contains('22').click()
             cy.wrap(input).invoke('prop','value').should('contain','Dec 22, 2021')
+        })
+    })
 
+    it.only('',()=>{
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layout').click()
+        cy.contains('nb-card','Using the Grid').find('[type="radio"]').then(radioButtons=>{
+            cy.wrap(radioButtons)
+                .first()
+                .check()
         })
     })
 })
