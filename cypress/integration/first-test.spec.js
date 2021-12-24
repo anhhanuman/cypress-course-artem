@@ -173,6 +173,7 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.get('nav nb-select button').click()
         cy.get('ul.options-list').contains('Dark').click()
+        cy.get('nav nb-select').should('contain','Dark')
         cy.get('nav.fixed').should('have.css','background-color','rgb(34, 43, 69)')
     })
 
