@@ -164,6 +164,10 @@ describe('the first test suite', () => {
         cy.get('[type="checkbox"]').check({force:true})
         //check method only check to the UNCHECK
         //IF you want to  uncheck you have to use the click()
+        cy.get('[type="checkbox"]').eq(1).check({force:true})
+        cy.get('[type="checkbox"]').eq(0).check({force:true})//not work
+        cy.get('[type="checkbox"]').eq(0).click({force:true})
+
     })
 
 })
