@@ -133,7 +133,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('',()=>{
+    it('',()=>{
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layout').click()
@@ -150,6 +150,12 @@ describe('the first test suite', () => {
             cy.wrap(radioButtons)
                 .first()
                 .should('not.be.checked')
+
+            cy.wrap(radioButtons)
+                .eq(2)
+                .should('be.disabled')
         })
     })
+
+
 })
