@@ -133,7 +133,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it('', () => {
+    it('radio buttons', () => {
         cy.visit('/')
         cy.contains('Forms').click()
         cy.contains('Form Layout').click()
@@ -157,17 +157,23 @@ describe('the first test suite', () => {
                 .should('be.disabled')
         })
     })
-    it.only('', () => {
+    it('check boxes', () => {
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Toastr').click()
-        cy.get('[type="checkbox"]').check({force:true})
+        cy.get('[type="checkbox"]').check({force: true})
         //check method only check to the UNCHECK boxes
         //IF you want to  uncheck you have to use the click()
-        cy.get('[type="checkbox"]').eq(1).check({force:true})
-        cy.get('[type="checkbox"]').eq(0).check({force:true})//not work
-        cy.get('[type="checkbox"]').eq(0).click({force:true})
+        cy.get('[type="checkbox"]').eq(1).check({force: true})
+        cy.get('[type="checkbox"]').eq(0).check({force: true})//not work
+        cy.get('[type="checkbox"]').eq(0).click({force: true})
+    })
 
+    it.only('Dropdown', () => {
+        cy.visit('/')
+        cy.get('nav nb-select button').click()
+        cy.get('ul.options-list').contains('Dark').click()
+        cy.get('nav.fixed').should('have.css','background-color','rgb(34, 43, 69)')
     })
 
 })
