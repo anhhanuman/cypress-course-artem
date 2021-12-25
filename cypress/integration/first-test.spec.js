@@ -190,19 +190,8 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.get('nav nb-select').then(dropdown => {
             cy.wrap(dropdown).click()
-            cy.get('ul.options-list nb-option').each((listItem, index) => {
-                const itemText = listItem.text().trim()
-                cy.wrap(listItem).click()
-
-                const colors = {
-                    "Light": "rgb(255, 255, 255)",
-                    "Dark": "rgb(34, 43, 69)",
-                    "Cosmic": "rgb(50, 50, 89)",
-                    "Corporate": "rgb(255, 255, 255)",
-                }
-
-                cy.get('nb-layout-header nav').should('have.css', 'background-color', colors[itemText])
-                cy.wrap(dropdown).click()
+            cy.get('ul.options-list nb-option').then(options => {
+                const total = options.length
             })
         })
     })
