@@ -188,13 +188,23 @@ describe('the first test suite', () => {
 
     it.only('iterate through each option in dropdown list and assert the background-color', () => {
         cy.visit('/')
-        cy.get('nav nb-select').click()
-        cy.get('ul.options-list nb-option').each(listItem => {
-            cy.wrap(listItem).click()
-            cy.get('nav nb-select').should('contain',listItem.text().trim())
-            cy.get('nav nb-select').click()
-        })
+        cy.get('nav nb-select').then(dropdown => {
+            cy.wrap(dropdown).click()
+            cy.get('ul.options-list nb-option').each(listItem => {
+                const itemText = listItem.text().trim()
+                cy.wrap(listItem).click()
 
+                const colors = {
+                    "Light": "rgb(255, 255, 255)",
+                    "Dark": "rgb(34, 43, 69)",
+                    "Cosmic": "rgb(50, 50, 89)",
+                    "Corporate": "rgb(255, 255, 255)",
+                }
+
+                cy.get('nb-layout-header nav').should('have.css', 'background-color', colors[itemText])
+                cy.wrap(dropdown).click()
+            })
+        })
     })
 
 })
