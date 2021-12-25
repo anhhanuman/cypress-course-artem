@@ -190,7 +190,7 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.get('nav nb-select').then(dropdown => {
             cy.wrap(dropdown).click()
-            cy.get('ul.options-list nb-option').each(listItem => {
+            cy.get('ul.options-list nb-option').each((listItem, index) => {
                 const itemText = listItem.text().trim()
                 cy.wrap(listItem).click()
 
