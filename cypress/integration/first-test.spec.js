@@ -192,6 +192,9 @@ describe('the first test suite', () => {
             cy.wrap(dropdown).click()
             cy.get('ul.options-list nb-option').then(options => {
                 const total = options.length
+                cy.wrap(options).each(listItem => {
+
+                })
             })
         })
     })
