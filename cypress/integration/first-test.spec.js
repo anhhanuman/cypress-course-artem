@@ -68,7 +68,6 @@ describe('the first test suite', () => {
         cy.contains('nb-card', 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
         cy.contains('nb-card', 'Basic form').find('[for="exampleInputEmail1"]').should('contain', 'Email')
         cy.contains('nb-card', 'Basic form').find('[for="exampleInputPassword1"]').should('contain', 'Password')
-
         //use the then() method in cypress to save the result from cypress command
         //cypress style:
         cy.contains('nb-card', 'Using the Grid').then(firstForm => {
@@ -138,7 +137,6 @@ describe('the first test suite', () => {
         cy.contains('Forms').click()
         cy.contains('Form Layout').click()
         cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then(radioButtons => {
-
             cy.wrap(radioButtons)
                 .first()
                 .check({force: true})
@@ -169,12 +167,23 @@ describe('the first test suite', () => {
         cy.get('[type="checkbox"]').eq(0).click({force: true})
     })
 
-    it.only('Dropdown', () => {
+    it('verify the dropdown selecting Dark and background color',()=>{
         cy.visit('/')
         cy.get('nav nb-select button').click()
         cy.get('ul.options-list').contains('Dark').click()
         cy.get('nav nb-select').should('contain','Dark')
         cy.get('nav.fixed').should('have.css','background-color','rgb(34, 43, 69)')
+    })
+    it.only('Select each option in dropdown list and assert', () => {
+        cy.visit('/')
+        cy.get('nav nb-select').then(dropdown => {
+            cy.wrap(dropdown).click()
+            cy.get('ul.options-list nb-option').each(listItem => {
+                cy.wrap(listItem).click()
+                cy.wrap(dropdown).should('contain',listItem.text().trim())
+                cy.wrap(dropdown).click()
+            })
+        })
     })
 
 })
