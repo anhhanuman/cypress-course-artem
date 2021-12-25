@@ -192,8 +192,19 @@ describe('the first test suite', () => {
             cy.wrap(dropdown).click()
             cy.get('ul.options-list nb-option').then(options => {
                 const total = options.length
-                cy.wrap(options).each(listItem => {
+                cy.wrap(options).each((listItem, index) => {
+                    const itemText = listItem.text().trim()
                     cy.wrap(listItem).click()
+                    const colors = {
+                        "Light": "rgb(255, 255, 255)",
+                        "Dark": "rgb(34, 43, 69)",
+                        "Cosmic": "rgb(50, 50, 89)",
+                        "Corporate": "rgb(255, 255, 255)",
+                    }
+                    cy.get('nav.fixed').should('have.css', 'background-color', colors[itemText])
+                    if (index < total - 1) {
+                        cy.wrap(dropdown).click()
+                    }
                 })
             })
         })
