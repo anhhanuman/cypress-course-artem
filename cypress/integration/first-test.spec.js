@@ -205,6 +205,7 @@ describe('the first test suite', () => {
                     if (index < total - 1) {
                         cy.wrap(dropdown).click()
                     }
+                    // Can not use the Cypress Select because the tag name is nb-select
                 })
             })
         })
