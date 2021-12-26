@@ -235,5 +235,11 @@ describe('the first test suite', () => {
             cy.wrap(row).find('[placeholder="Last Name"]').click().type('Mai')
             cy.wrap(row).find('.nb-checkmark').click()
         })
+        cy.get('tbody tr').first().then(firstRow => {
+            cy.wrap(firstRow).find('td').eq(2).should('contain','Anh')
+            cy.wrap(firstRow).find('td').eq(3).should('contain','Mai')
+
+
+        })
     })
 })
