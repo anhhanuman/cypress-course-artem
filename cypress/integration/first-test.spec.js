@@ -244,6 +244,11 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
-        cy.get('thead [placeholder="Age"]').click().type('20')
+        cy.get('thead [placeholder="Age"]').type('20')
+        cy.wait(500)
+        cy.get('tbody tr').each(row => {
+            const rowValue = row.find('td').eq(6).text()
+            expect(rowValue).to.equal('20')
+        })
     })
 })
