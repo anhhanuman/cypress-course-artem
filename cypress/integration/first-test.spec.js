@@ -229,9 +229,11 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
-        cy.get('i.nb-plus').click().find('tr').eq(2).then(tableRow => {
-            cy.wrap(tableRow).find('[placeholder="First Name"]').click().type('Anh')
+        cy.get('i.nb-plus').click()
+        cy.get('thead').find('tr').eq(2).then(row => {
+            cy.wrap(row).find('[placeholder="First Name"]').click().type('Anh')
+            cy.wrap(row).find('[placeholder="Last Name"]').click().type('Mai')
+            cy.wrap(row).find('.nb-checkmark').click()
         })
-
     })
 })
