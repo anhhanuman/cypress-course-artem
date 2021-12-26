@@ -217,6 +217,7 @@ describe('the first test suite', () => {
         cy.contains('Smart Table').click()
         cy.get('tbody').contains('tr', 'Larry').then(tableRow => {
             cy.wrap(tableRow).find('.nb-edit').click()
+            cy.wrap(tableRow).find('[placeholder="Age"]').click().clear().type('25')
 
         })
     })
