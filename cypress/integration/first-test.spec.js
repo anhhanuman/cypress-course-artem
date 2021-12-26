@@ -244,6 +244,6 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
-        cy.get('thead [placeholder="Age"]').click().type('20')
+        cy.get('thead [placeholder="Age"]')
     })
 })
