@@ -268,12 +268,16 @@ describe('the first test suite', () => {
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
 
-        const tobeFilteredAge = ['20', '30', '40']
+        const tobeFilteredAge = ['20', '30', '40', 200]
         cy.wrap(tobeFilteredAge).each(age => {
             cy.get('thead [placeholder="Age"]').clear().type(age.toString())
             cy.wait(500)
             cy.get('tbody tr').each(row => {
-                cy.wrap(row).find('td').eq(6).should('contain', age)
+                if (Number(age) === 200) {
+                    cy.wrap(row).should('contain', 'No data found')
+                } else {
+                    cy.wrap(row).find('td').eq(6).should('contain', age)
+                }
             })
         })
     })
