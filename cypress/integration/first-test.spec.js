@@ -215,7 +215,8 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
-        cy.get('tbody').contains('tr','Larry').then(tableRow=>{
+        cy.get('tbody').contains('tr', 'Larry').then(tableRow => {
+            cy.wrap(tableRow).find('.nb-edit').click()
 
         })
     })
