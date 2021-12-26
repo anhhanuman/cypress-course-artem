@@ -211,7 +211,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('Web table', () => {
+    it('Web table', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -221,7 +221,17 @@ describe('the first test suite', () => {
             cy.wrap(tableRow).find('.nb-checkmark').click()
             //const initialValue = tableRow.find('td.ng-star-inserted').eq(6).text()
             //expect(initialValue).to.equal('18')
-            cy.wrap(tableRow).find('td').eq(6).should('contain','25')
+            cy.wrap(tableRow).find('td').eq(6).should('contain', '25')
         })
+    })
+
+    it.only('add new row and verify', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        cy.get('i.nb-plus').click().find('tr').eq(2).then(tableRow => {
+            cy.wrap(tableRow).find('[placeholder="First Name"]').click().type('Anh')
+        })
+
     })
 })
