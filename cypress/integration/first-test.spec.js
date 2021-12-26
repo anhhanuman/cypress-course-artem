@@ -219,6 +219,8 @@ describe('the first test suite', () => {
             cy.wrap(tableRow).find('.nb-edit').click()
             cy.wrap(tableRow).find('[placeholder="Age"]').click().clear().type('25')
             cy.wrap(tableRow).find('.nb-checkmark').click()
+            /*const newAge = */console.log(tableRow.find('div.ng-star-inserted').text())
+            //expect(newAge).to.equal('25')
         })
     })
 })
