@@ -240,7 +240,7 @@ describe('the first test suite', () => {
             cy.wrap(firstRow).find('td').eq(3).should('contain', 'Mai')
         })
     })
-    it.only('filter by age', () => {
+    it('filter by age', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -249,6 +249,17 @@ describe('the first test suite', () => {
         cy.get('tbody tr').each(row => {
             const rowValue = row.find('td').eq(6).text()
             expect(rowValue).to.equal('20')
+        })
+    })
+
+    it.only('filter by age by multiple loops', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+
+        const tobeFilteredAge = [20, 30, 40]
+        cy.wrap(tobeFilteredAge).each(age => {
+            console.log('iterate through each array value: ' + age)
         })
     })
 })
