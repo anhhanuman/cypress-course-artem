@@ -186,7 +186,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('iterate through each option in dropdown list and assert the background-color', () => {
+    it('iterate through each option in dropdown list and assert the background-color', () => {
         cy.visit('/')
         cy.get('nav nb-select').then(dropdown => {
             cy.wrap(dropdown).click()
@@ -211,4 +211,12 @@ describe('the first test suite', () => {
         })
     })
 
+    it.only('Web table', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        cy.get('tbody').contains('tr','Larry').then(tableRow=>{
+
+        })
+    })
 })
