@@ -225,7 +225,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('add new row and verify', () => {
+    it('add new row and verify', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -236,10 +236,14 @@ describe('the first test suite', () => {
             cy.wrap(row).find('.nb-checkmark').click()
         })
         cy.get('tbody tr').first().then(firstRow => {
-            cy.wrap(firstRow).find('td').eq(2).should('contain','Anh')
-            cy.wrap(firstRow).find('td').eq(3).should('contain','Mai')
-
-
+            cy.wrap(firstRow).find('td').eq(2).should('contain', 'Anh')
+            cy.wrap(firstRow).find('td').eq(3).should('contain', 'Mai')
         })
+    })
+    it.only('filter by age', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        cy.get('thead [placeholder="Age"]').click().type('20')
     })
 })
