@@ -219,9 +219,9 @@ describe('the first test suite', () => {
             cy.wrap(tableRow).find('.nb-edit').click()
             cy.wrap(tableRow).find('[placeholder="Age"]').click().clear().type('25')
             cy.wrap(tableRow).find('.nb-checkmark').click()
-            const initialValue = tableRow.find('td.ng-star-inserted').eq(6).text()
-            expect(initialValue).to.equal('18')
-
+            //const initialValue = tableRow.find('td.ng-star-inserted').eq(6).text()
+            //expect(initialValue).to.equal('18')
+            cy.wrap(tableRow).find('td').eq(6).should('contain','25')
         })
     })
 })
