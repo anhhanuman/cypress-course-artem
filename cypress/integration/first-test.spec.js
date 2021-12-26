@@ -252,7 +252,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('filter by age by multiple loops', () => {
+    it('filter by age by multiple loops', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -260,6 +260,21 @@ describe('the first test suite', () => {
         const tobeFilteredAge = [20, 30, 40]
         cy.wrap(tobeFilteredAge).each(age => {
             console.log('iterate through each array value: ' + age)
+        })
+    })
+
+    it.only('filter by age by multiple loops and assert', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+
+        const tobeFilteredAge = ['20', '30', '40']
+        cy.wrap(tobeFilteredAge).each(age => {
+            cy.get('thead [placeholder="Age"]').clear().type(age.toString())
+            cy.wait(500)
+            cy.get('tbody tr').each(row => {
+                cy.wrap(row).find('td').eq(6).should('contain', age)
+            })
         })
     })
 })
