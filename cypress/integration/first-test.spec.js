@@ -263,7 +263,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('filter by age by multiple loops and assert', () => {
+    it('filter by age by multiple loops and assert', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -280,5 +280,22 @@ describe('the first test suite', () => {
                 }
             })
         })
+    })
+
+    it.only('Lesson 17: Date picker', () => {
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Datepicker').click()
+        cy.get('input[placeholder="Form Picker"]').click()
+
+        let date = new Date()
+        date.setDate(date.getDate() + 5)
+        const futureDate = date.getDate()
+
+        cy.get('nb-calendar-navigation button').invoke('text').then(text => {
+            console.log(text)
+            cy.get('[data-name="chevron-right"]').click()
+        })
+
     })
 })
