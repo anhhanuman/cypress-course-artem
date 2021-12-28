@@ -292,10 +292,14 @@ describe('the first test suite', () => {
         date.setDate(date.getDate() + 5)
         const futureDate = date.getDate()
         const futureMonth = date.toLocaleDateString('default', {month: 'short'})
-
         cy.get('nb-calendar-navigation button').invoke('text').then(text => {
             console.log(text)
-            cy.get('[data-name="chevron-right"]').click()
+            console.log(text.includes(futureMonth))
+            if(!text.includes(futureMonth)){
+                cy.get('[data-name="chevron-right"]').click()
+                cy.get('nb-calendar-navigation button').should('contain',futureMonth)
+                console.log(text)
+            }
         })
 
     })
