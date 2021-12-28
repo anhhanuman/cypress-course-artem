@@ -292,13 +292,16 @@ describe('the first test suite', () => {
         date.setDate(date.getDate() + 5)
         const futureDate = date.getDate()
         const futureMonth = date.toLocaleDateString('default', {month: 'short'})
+        const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
         cy.get('nb-calendar-navigation button').invoke('text').then(text => {
-            console.log(text)
-            console.log(text.includes(futureMonth))
-            if(!text.includes(futureMonth)){
+            if (!text.includes(futureMonth)) {
                 cy.get('[data-name="chevron-right"]').click()
-                cy.get('nb-calendar-navigation button').should('contain',futureMonth)
-                console.log(text)
+                cy.get('nb-calendar-navigation button').should('contain', futureMonth)
+                cy.wait(500)
+                cy.get('nb-calendar-day-picker').contains(futureDate).click()
+                console.log(expectedDate)
+            } else {
+                cy.get('nb-calendar-day-picker').contains(futureDate).click()
             }
         })
 
