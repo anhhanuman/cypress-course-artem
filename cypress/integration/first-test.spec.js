@@ -298,7 +298,7 @@ describe('the first test suite', () => {
                 cy.get('[data-name="chevron-right"]').click()
                 cy.get('nb-calendar-navigation button').should('contain', futureMonth)
                 cy.wait(500)
-                cy.get('nb-calendar-day-picker').contains(futureDate).click()
+                cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
                 console.log(expectedDate)
             } else {
                 cy.get('nb-calendar-day-picker').contains(futureDate).click()
