@@ -289,19 +289,21 @@ describe('the first test suite', () => {
         cy.get('input[placeholder="Form Picker"]').click()
 
         let date = new Date()
-        date.setDate(date.getDate() + 5)
+        date.setDate(date.getDate() + 1)
         const futureDate = date.getDate()
         const futureMonth = date.toLocaleDateString('default', {month: 'short'})
         const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
+
         cy.get('nb-calendar-navigation button').invoke('text').then(text => {
             if (!text.includes(futureMonth)) {
                 cy.get('[data-name="chevron-right"]').click()
                 cy.get('nb-calendar-navigation button').should('contain', futureMonth)
-                cy.wait(500)
                 cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
-                console.log(expectedDate)
+                cy.get('input[placeholder="Form Picker"]').invoke('prop', 'value').should('contain', expectedDate)
             } else {
-                cy.get('nb-calendar-day-picker').contains(futureDate).click()
+                cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
+                cy.get('input[placeholder="Form Picker"]').invoke('prop', 'value').should('contain', expectedDate)
+
             }
         })
 
