@@ -288,20 +288,22 @@ describe('the first test suite', () => {
         cy.contains('Datepicker').click()
         cy.get('input[placeholder="Form Picker"]').click()
 
-        let date = new Date()
-        date.setDate(date.getDate() + 70)
-        const futureDate = date.getDate()
-        const futureMonth = date.toLocaleDateString('default', {month: 'short'})
-        const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
+
         selectDayFromCurrent()
+
         function selectDayFromCurrent() {
-            cy.get('nb-calendar-navigation button').invoke('text', ).then(buttonText => {
+            let date = new Date()
+            date.setDate(date.getDate() + 70)
+            const futureDate = date.getDate()
+            const futureMonth = date.toLocaleDateString('default', {month: 'short'})
+            const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
+
+            cy.get('nb-calendar-navigation button').invoke('text',).then(buttonText => {
                 if (!buttonText.includes(futureMonth)) {
                     cy.get('[data-name="chevron-right"]').click()
                     console.log(futureDate)
                     selectDayFromCurrent()
-                }
-                else {
+                } else {
                     cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
                 }
             })
