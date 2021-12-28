@@ -289,23 +289,51 @@ describe('the first test suite', () => {
         cy.get('input[placeholder="Form Picker"]').click()
 
         let date = new Date()
-        date.setDate(date.getDate() + 1)
+        date.setDate(date.getDate() + 70)
         const futureDate = date.getDate()
         const futureMonth = date.toLocaleDateString('default', {month: 'short'})
         const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
 
-        cy.get('nb-calendar-navigation button').invoke('text').then(text => {
-            if (!text.includes(futureMonth)) {
-                cy.get('[data-name="chevron-right"]').click()
-                cy.get('nb-calendar-navigation button').should('contain', futureMonth)
-                cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
-                cy.get('input[placeholder="Form Picker"]').invoke('prop', 'value').should('contain', expectedDate)
-            } else {
-                cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
-                cy.get('input[placeholder="Form Picker"]').invoke('prop', 'value').should('contain', expectedDate)
+        /*cy.get('nb-calendar-navigation button').invoke('text').then(text => {
+            selectDayFromCurrent()
+            function selectDayFromCurrent() {
+                if (!text.includes(futureMonth)) {
+                    cy.get('[data-name="chevron-right"]').click()
+                    const test = cy.get('nb-calendar-navigation button')
+                    //selectDayFromCurrent()
+                    cy.get('nb-calendar-navigation button').should('contain', futureMonth)
+                    cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
+                    cy.get('input[placeholder="Form Picker"]').invoke('prop', 'value').should('contain', expectedDate)
+                } else {
+                    cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
+                    cy.get('input[placeholder="Form Picker"]').invoke('prop', 'value').should('contain', expectedDate)
 
+                }
             }
-        })
+        })*/
 
+        /*cy.get('nb-calendar-navigation button').then(text => {
+            while (!cy.contains('nb-calendar-navigation button', futureMonth)) {
+                cy.get('[data-name="chevron-right"]').click()
+            }
+            /!*if (!text.text().includes(futureMonth)) {
+                for (let i = 1; i < 10; i++) {
+                    cy.get('[data-name="chevron-right"]').click()
+                    cy.get('nb-calendar-navigation button').then(newText => {
+                            console.log(newText.text())
+                    })
+                }
+            }*!/
+        })*/
+        selectDayFromCurrent()
+        function selectDayFromCurrent() {
+            cy.get('nb-calendar-navigation button').invoke('text', ).then(dateAttribute => {
+                if (!dateAttribute.includes(futureMonth)) {
+                    cy.get('[data-name="chevron-right"]').click()
+                    console.log(dateAttribute)
+                    selectDayFromCurrent()
+                }
+            })
+        }
     })
 })
