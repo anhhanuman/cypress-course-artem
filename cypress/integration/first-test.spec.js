@@ -282,7 +282,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('Lesson 17: Date picker', () => {
+    it('Lesson 17: Date picker', () => {
         function selectDayFromCurrent(day) {
             let date = new Date()
             date.setDate(date.getDate() + day)
@@ -312,4 +312,14 @@ describe('the first test suite', () => {
             cy.wrap(input).invoke('prop', 'value').should('contain', expectedDate)
         })
     })
+
+    it.only('Lesson 18: click/hover tooltip', () => {
+        cy.visit('/')
+        cy.contains('Modal & Overlays').click()
+        cy.contains('Tooltip').click()
+        cy.contains('nb-card','Tooltip With Icon')
+            .find('button').first().click()
+        cy.get('nb-tooltip').should('have.text','This is a tooltip')
+    })
+
 })
