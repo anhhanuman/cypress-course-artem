@@ -291,6 +291,7 @@ describe('the first test suite', () => {
         let date = new Date()
         date.setDate(date.getDate() + 5)
         const futureDate = date.getDate()
+        const futureMonth = date.toLocaleDateString('default', {month: 'short'})
 
         cy.get('nb-calendar-navigation button').invoke('text').then(text => {
             console.log(text)
