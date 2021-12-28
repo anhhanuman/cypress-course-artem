@@ -283,17 +283,9 @@ describe('the first test suite', () => {
     })
 
     it.only('Lesson 17: Date picker', () => {
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Datepicker').click()
-        cy.get('input[placeholder="Form Picker"]').click()
-
-
-        selectDayFromCurrent()
-
-        function selectDayFromCurrent() {
+        function selectDayFromCurrent(day) {
             let date = new Date()
-            date.setDate(date.getDate() + 70)
+            date.setDate(date.getDate() + day)
             const futureDate = date.getDate()
             const futureMonth = date.toLocaleDateString('default', {month: 'short'})
             const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
@@ -302,11 +294,22 @@ describe('the first test suite', () => {
                 if (!buttonText.includes(futureMonth)) {
                     cy.get('[data-name="chevron-right"]').click()
                     console.log(futureDate)
-                    selectDayFromCurrent()
+                    selectDayFromCurrent(day)
                 } else {
                     cy.get('nb-calendar-day-picker [class="day-cell ng-star-inserted"]').contains(futureDate).click()
                 }
             })
+
+            return expectedDate
         }
+
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Datepicker').click()
+        cy.get('input[placeholder="Form Picker"]').then(input => {
+            cy.wrap(input).click()
+            const expectedDate = selectDayFromCurrent(300)
+            cy.wrap(input).invoke('prop', 'value').should('contain', expectedDate)
+        })
     })
 })
