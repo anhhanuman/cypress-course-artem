@@ -5,6 +5,7 @@ export class FormLayoutPage {
             cy.wrap(form).find('input[placeholder="Email"]').click().type('anhmai@autotest.vn')
             cy.wrap(form).find('[type="checkbox"]').check({force: true})
             cy.wrap(form).submit()
+            //only use for form, if DOM element has form tag
         })
     }
 }
