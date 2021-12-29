@@ -328,7 +328,7 @@ describe('the first test suite', () => {
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
         cy.get('tbody tr').first().find('[class="nb-trash"]').click()
-        cy.on('window:confirm',(confirmMessage)=>{
+        cy.on('window:confirm', (confirmMessage) => {
             expect(confirmMessage).to.equal('Are you sure you want to delete?')
         })
     })
@@ -337,9 +337,12 @@ describe('the first test suite', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
-        cy.get('tbody tr').first().find('[class="nb-trash"]').click()
-
         const stub = cy.stub()
+        //when the event is fired, assign the result to the stub object
+        cy.on('window:confirm', stub)
+        cy.get('tbody tr').first().find('[class="nb-trash"]').click().then(() => {
+            expect(stub.getCall(0)).to.be.calledWith('Are you sure you want to delete?')
+        })
     })
 
 })
