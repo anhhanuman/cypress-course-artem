@@ -323,7 +323,7 @@ describe('the first test suite', () => {
         //todo: dialog box verification
     })
 
-    it.only('Lesson 18: Dialog on browser', () => {
+    it('Lesson 18: Dialog on browser', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -331,6 +331,15 @@ describe('the first test suite', () => {
         cy.on('window:confirm',(confirmMessage)=>{
             expect(confirmMessage).to.equal('Are you sure you want to delete?')
         })
+    })
+
+    it.only('Lesson 18: Dialog on browser - stub way on window:confirm', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        cy.get('tbody tr').first().find('[class="nb-trash"]').click()
+
+        const stub = cy.stub()
     })
 
 })
