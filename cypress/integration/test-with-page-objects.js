@@ -1,4 +1,5 @@
 import {navigationPage} from "../support/page_objects/navigation-page";
+import {formLayoutPage} from "../support/page_objects/form-layout-page";
 
 describe('Test with page object', () => {
     beforeEach('open application', () => {
@@ -16,5 +17,6 @@ describe('Test with page object', () => {
 
     it.only('submit inline and basic form and select tomorrow from the calendar', () => {
         navigationPage.displayFormLayout()
+        formLayoutPage.submitInlineFormWithNameAndEmail()
     })
 })
