@@ -313,13 +313,24 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('Lesson 18: click/hover tooltip', () => {
+    it('Lesson 18: click/hover tooltip', () => {
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Tooltip').click()
-        cy.contains('nb-card','Tooltip With Icon')
+        cy.contains('nb-card', 'Tooltip With Icon')
             .find('button').first().click()
-        cy.get('nb-tooltip').should('have.text','This is a tooltip')
+        cy.get('nb-tooltip').should('have.text', 'This is a tooltip')
+        //todo: dialog box verification
+    })
+
+    it.only('Lesson 18: Dialog on browser', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        cy.get('tbody tr').first().find('[class="nb-trash"]').click()
+        cy.on('window:confirm',(confirmMessage)=>{
+            expect(confirmMessage).to.equal('Are you sure you want to delete?')
+        })
     })
 
 })
