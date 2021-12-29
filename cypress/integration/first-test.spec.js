@@ -333,7 +333,7 @@ describe('the first test suite', () => {
         })
     })
 
-    it.only('Lesson 18: Dialog on browser - stub way on window:confirm', () => {
+    it('Lesson 18: Dialog on browser - stub way on window:confirm', () => {
         cy.visit('/')
         cy.contains('Tables & Data').click()
         cy.contains('Smart Table').click()
@@ -344,5 +344,14 @@ describe('the first test suite', () => {
             expect(stub.getCall(0)).to.be.calledWith('Are you sure you want to delete?')
         })
     })
+
+    it.only('Lesson 18: Dialog on browser - stub way on window:confirm - hit Cancel ', () => {
+        cy.visit('/')
+        cy.contains('Tables & Data').click()
+        cy.contains('Smart Table').click()
+        cy.get('tbody tr').first().find('[class="nb-trash"]').click()
+        cy.on('window:confirm', () => false)
+    })
+
 
 })
