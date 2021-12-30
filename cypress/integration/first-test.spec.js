@@ -290,7 +290,7 @@ describe('the first test suite', () => {
             const futureMonth = date.toLocaleDateString('default', {month: 'short'})
             const expectedDate = futureMonth + ' ' + futureDate + ', ' + date.getFullYear()
 
-            cy.get('nb-calendar-navigation button').invoke('text',).then(buttonText => {
+            cy.get('nb-calendar-navigation button').invoke('text').then(buttonText => {
                 if (!buttonText.includes(futureMonth)) {
                     cy.get('[data-name="chevron-right"]').click()
                     console.log(futureDate)
