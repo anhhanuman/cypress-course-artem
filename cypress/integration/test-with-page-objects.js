@@ -1,5 +1,6 @@
 import {navigationPage} from "../support/page_objects/navigation-page";
 import {formLayoutPage} from "../support/page_objects/form-layout-page";
+import {datepickerPage} from "../support/page_objects/datepicker-page";
 
 describe('Test with page object', () => {
     beforeEach('open application', () => {
@@ -17,6 +18,12 @@ describe('Test with page object', () => {
 
     it.only('submit inline and basic form and select tomorrow from the calendar', () => {
         navigationPage.displayFormLayout()
-        formLayoutPage.submitInlineFormWithNameAndEmail('Anh Mai','emailtest@yahoo.com')
+        formLayoutPage
+            .submitInlineFormWithNameAndEmail('Anh Mai', 'emailtest@yahoo.com')
+            .submitBasicFormWithEmailAndPassword('emailtest@yahoo.com', 'test')
+        navigationPage.displayDatePickerPage()
+        datepickerPage.selectCommonDatepickerDateFromToday(1)
+            .selectDateRangeFromToday(7, 14)
+
     })
 })
