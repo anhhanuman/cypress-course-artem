@@ -13,7 +13,7 @@ in the folder support
 
 #### support/command.js
 you can add common functions that you use across the app
-overwrite is an advanced topic, and it is rarely used
+overwrite the cypress command, and can be used in the test spec
 
 #### plugins/index.js
 you can extend the cypress functionalities outside of cypress
