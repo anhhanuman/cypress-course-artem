@@ -352,6 +352,4 @@ describe('the first test suite', () => {
         cy.get('tbody tr').first().find('[class="nb-trash"]').click()
         cy.on('window:confirm', () => false)
     })
-
-
 })
