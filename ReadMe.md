@@ -45,4 +45,4 @@ Cypress
 - does not need to use the **xpath** like Selenium => not recommend
 - use the Jquery engine selector => recommend
 - use the best practice data-cy
-- 
+
